@@ -25,15 +25,21 @@ interface IHttpClient {
 
 export default class HttpClient implements IHttpClient {
   private static client: AxiosInstance
-  constructor() {
+  protected constructor() {
     if (!HttpClient.client) {
       HttpClient.client = HttpClient.createAxiosClient()
     }
   }
-  protected static createAxiosClient(): AxiosInstance {
+  private static createAxiosClient(): AxiosInstance {
     console.log('create axios')
 
-    return Axios.create({})
+    return Axios.create({
+      baseURL: import.meta.env.VITE_APP_TITLE,
+      timeout: 5 * 1000,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
   }
   async get<TResponse>(path: string) {
     return (await HttpClient.client.get<TResponse>(path)) as TResponse
