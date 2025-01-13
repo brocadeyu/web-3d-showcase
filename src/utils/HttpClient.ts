@@ -34,7 +34,7 @@ export default class HttpClient implements IHttpClient {
     console.log('create axios')
 
     return Axios.create({
-      baseURL: import.meta.env.VITE_APP_TITLE,
+      baseURL: import.meta.env.VITE_APP_BASE_URL,
       timeout: 5 * 1000,
       headers: {
         'Content-Type': 'application/json',
