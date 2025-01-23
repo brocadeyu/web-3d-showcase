@@ -7,11 +7,13 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import vitePluginConsoleOverlay from './src/utils/vite-plugin-console-overlay'
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   return {
     plugins: [
+      vitePluginConsoleOverlay(),
       vue(),
       vueJsx(),
       vueDevTools(),
