@@ -9,7 +9,6 @@ import HelloWorld from './components/HelloWorld.vue'
 
     <div class="wrapper">
       <HelloWorld msg="vite-template-next" />
-
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <el-button>测试</el-button>

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "name": "next-v3-template dev",
+      "request": "launch",
+      "url": "http://localhost:5180",
+      "env": { "NODE_ENV": "development" },
+      "sourceMaps": true,
+      "breakOnLoad": true,
+      "webRoot": "${workspaceFolder}/src"
+    }
+  ]
+}
