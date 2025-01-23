@@ -25,7 +25,7 @@ export default defineConfig(({ mode }) => {
       }),
     ],
     server: {
-      port: 5177,
+      port: 5199,
       host: '0.0.0.0',
       // /api/login -> {env.VITE_APP_PROXY}/login
       proxy: {
