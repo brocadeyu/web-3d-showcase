@@ -5,7 +5,7 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
-import router from './router'
+import { router } from './router'
 
 // 创建应用实例
 const app = createApp(App)
