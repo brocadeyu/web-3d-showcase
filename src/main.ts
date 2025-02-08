@@ -1,6 +1,6 @@
 // 样式导入
-import './assets/main.css'
-
+// import './assets/main.css'
+import './assets/global.css'
 // Vue 相关导入
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'

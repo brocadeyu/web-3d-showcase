@@ -1,0 +1,22 @@
+@import 'tailwindcss';
+body {
+  min-height: 100vh;
+}
+#app,
+body,
+html {
+  height: 100vh;
+  width: 100vw;
+  overscroll-behavior: none;
+}
+:root {
+}
+
+@layer components {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  .flex-col-center {
+    @apply flex flex-col items-center justify-center;
+  }
+}

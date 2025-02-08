@@ -8,6 +8,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import vitePluginConsoleOverlay from './src/utils/vite-plugin-console-overlay'
+import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
@@ -17,6 +18,7 @@ export default defineConfig(({ mode }) => {
       vue(),
       vueJsx(),
       vueDevTools(),
+      tailwindcss(),
       AutoImport({
         resolvers: [ElementPlusResolver()],
         dts: './src/types/auto-imports.d.ts',

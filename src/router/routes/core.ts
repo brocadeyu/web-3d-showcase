@@ -20,7 +20,7 @@ const coreRoutes: RouteRecordRaw[] = [
       {
         name: 'Login',
         path: 'login',
-        component: () => import('@/views/auth/login-page.vue'),
+        component: () => import('@/views/auth/login.vue'),
       },
       // {
       //   name: 'Register',
