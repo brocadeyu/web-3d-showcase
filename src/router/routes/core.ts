@@ -10,7 +10,7 @@ const coreRoutes: RouteRecordRaw[] = [
   {
     name: 'Root',
     path: '/',
-    redirect: '/home',
+    redirect: '/workspace',
   },
   {
     component: AuthPageLayout,
@@ -28,6 +28,16 @@ const coreRoutes: RouteRecordRaw[] = [
       //   component: () => import('@/views/auth/register-page.vue'),
       // },
     ],
+  },
+  {
+    name: 'Workspace',
+    path: '/workspace',
+    component: () => import('@/views/modules/workspace/index.vue'),
+    meta: {
+      affixTab: true,
+      icon: 'ant-design:rocket-outlined',
+      title: '111',
+    },
   },
 ]
 export { coreRoutes, fallbackNotFoundRoute }
