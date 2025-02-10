@@ -3,7 +3,7 @@ import type { Router } from 'vue-router'
 // import { DEFAULT_HOME_PATH, LOGIN_PATH } from '@vben/constants'
 // import { preferences } from '@vben/preferences'
 // import { useAccessStore, useUserStore } from '@vben/stores'
-// import { startProgress, stopProgress } from '@vben/utils'
+import { startProgress, stopProgress } from '@/utils/nprogress'
 
 // import { useTitle } from '@vueuse/core'
 import { useAuthStore } from '@/stores/auth'
@@ -26,7 +26,7 @@ function setupCommonGuard(router: Router) {
 
     // 页面加载进度条
     // if (!to.meta.loaded && preferences.transition.progress) {
-    //   // startProgress()
+    startProgress()
     // }
     return true
   })
@@ -38,7 +38,7 @@ function setupCommonGuard(router: Router) {
 
     // 关闭页面加载进度条
     // if (preferences.transition.progress) {
-    //   // stopProgress()
+    stopProgress()
     // }
     console.log(to)
 

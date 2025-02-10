@@ -1,6 +1,6 @@
 // 控制台覆盖层的 HTML 结构
 const createOverlayHTML = () => `
-  <div id="console-overlay" style="position: fixed; top: 10px; right: 10px; max-height: 500px; max-width: 400px; overflow-y: auto; background: rgba(0, 0, 0, 0.8); color: white; padding: 10px; border-radius: 4px; font-family: monospace; z-index: 9999;"></div>
+  <div id="console-overlay" style="position: fixed; top: 40px; right: 12px; max-height: 500px; max-width: 400px; overflow-y: auto; background: rgba(0, 0, 0, 0.8); color: white; padding: 10px; border-radius: 4px; font-family: monospace; z-index: 9999;"></div>
 `
 
 // 控制台重写的主函数

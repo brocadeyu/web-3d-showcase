@@ -9,6 +9,7 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import vitePluginConsoleOverlay from './src/utils/vite-plugin-console-overlay'
 import tailwindcss from '@tailwindcss/vite'
+import { viteInjectAppLoadingPlugin } from './src/utils/inject-app-loading/index'
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
@@ -27,6 +28,7 @@ export default defineConfig(({ mode }) => {
         resolvers: [ElementPlusResolver()],
         dts: './src/types/components.d.ts',
       }),
+      viteInjectAppLoadingPlugin(false, {}),
     ],
     server: {
       port: 5199,

@@ -1,21 +1,12 @@
-// 样式导入
-// import './assets/main.css'
-import './assets/global.css'
-// Vue 相关导入
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
-import App from './App.vue'
-import { router } from './router'
+import { unmountGlobalLoading } from './utils/unmount-global-loading'
+async function initApplication() {
+  // 启动应用并挂载
+  // vue应用主要逻辑及视图
+  const { bootstrap } = await import('./bootstrap')
+  await bootstrap()
 
-// 创建应用实例
-const app = createApp(App)
+  // 移除并销毁loading
+  unmountGlobalLoading()
+}
 
-// 使用插件
-const pinia = createPinia()
-pinia.use(piniaPluginPersistedstate)
-app.use(pinia)
-app.use(router)
-
-// 挂载应用
-app.mount('#app')
+initApplication()
