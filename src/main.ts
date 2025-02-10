@@ -4,6 +4,7 @@ import './assets/global.css'
 // Vue 相关导入
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import App from './App.vue'
 import { router } from './router'
 
@@ -11,7 +12,9 @@ import { router } from './router'
 const app = createApp(App)
 
 // 使用插件
-app.use(createPinia())
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
+app.use(pinia)
 app.use(router)
 
 // 挂载应用

@@ -6,7 +6,7 @@ import type { Router } from 'vue-router'
 // import { startProgress, stopProgress } from '@vben/utils'
 
 // import { useTitle } from '@vueuse/core'
-
+import { useAuthStore } from '@/stores/auth'
 // import { $t } from '#/locales'
 import { coreRouteNames, dynamicRoutes } from './routes/index'
 // import { useAuthStore } from '#/store'
@@ -59,7 +59,7 @@ function setupAccessGuard(router: Router) {
   router.beforeEach(async (to, from) => {
     // const accessStore = useAccessStore()
     // const userStore = useUserStore()
-    // const authStore = useAuthStore()
+    const authStore = useAuthStore()
 
     // 基本路由，这些路由不需要进入权限拦截
     if (coreRouteNames.includes(to.name as string)) {
@@ -70,24 +70,26 @@ function setupAccessGuard(router: Router) {
     }
 
     // accessToken 检查
-    // if (!accessStore.accessToken) {
-    //   // 明确声明忽略权限访问权限，则可以访问
-    //   if (to.meta.ignoreAccess) {
-    //     return true
-    //   }
+    if (!authStore.accessToken) {
+      // 明确声明忽略权限访问权限，则可以访问
+      if (to.meta.ignoreAccess) {
+        return true
+      }
 
-    //   // 没有访问权限，跳转登录页面
-    //   if (to.fullPath !== LOGIN_PATH) {
-    //     return {
-    //       path: LOGIN_PATH,
-    //       // 如不需要，直接删除 query
-    //       query: { redirect: encodeURIComponent(to.fullPath) },
-    //       // 携带当前跳转的页面，登录后重新跳转该页面
-    //       replace: true,
-    //     }
-    //   }
-    //   return to
-    // }
+      // 没有访问权限，跳转登录页面
+      if (to.fullPath !== '/auth/login') {
+        console.log('111')
+
+        return {
+          path: '/auth/login',
+          // 如不需要，直接删除 query
+          query: { redirect: encodeURIComponent(to.fullPath) },
+          // 携带当前跳转的页面，登录后重新跳转该页面
+          replace: true,
+        }
+      }
+      return to
+    }
 
     // 是否已经生成过动态路由
     // if (accessStore.isAccessChecked) {
