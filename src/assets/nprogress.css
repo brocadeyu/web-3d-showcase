@@ -5,7 +5,7 @@
 
 #nprogress .bar {
   @apply fixed left-[0] top-[0] z-[1031] h-[2px] w-full;
-  background-color: green;
+  background-color: #50ffe5;
 }
 
 /* Fancy blur effect */

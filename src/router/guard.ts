@@ -25,9 +25,9 @@ function setupCommonGuard(router: Router) {
     to.meta.loaded = loadedPaths.has(to.path)
 
     // 页面加载进度条
-    // if (!to.meta.loaded && preferences.transition.progress) {
-    startProgress()
-    // }
+    if (!to.meta.loaded) {
+      startProgress()
+    }
     return true
   })
 
