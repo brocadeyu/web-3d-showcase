@@ -9,8 +9,10 @@ html {
   width: 100vw;
   overscroll-behavior: none;
   background-color: #14161a;
-}
-:root {
+  margin: 0;
+  line-height: 1.5 !important;
+  font-family: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji' !important;
 }
 
 @layer components {

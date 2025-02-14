@@ -29,15 +29,15 @@ const coreRoutes: RouteRecordRaw[] = [
       // },
     ],
   },
-  // {
-  //   name: 'Workspace',
-  //   path: '/workspace',
-  //   component: () => import('@/views/modules/workspace/index.vue'),
-  //   meta: {
-  //     affixTab: true,
-  //     icon: 'ant-design:rocket-outlined',
-  //     title: '111',
-  //   },
-  // },
+  {
+    name: 'Workspace',
+    path: '/workspace',
+    component: () => import('@/views/core/basic-layout.vue'),
+    meta: {
+      affixTab: true,
+      icon: 'ant-design:rocket-outlined',
+      title: '111',
+    },
+  },
 ]
 export { coreRoutes, fallbackNotFoundRoute }

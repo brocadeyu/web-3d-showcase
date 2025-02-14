@@ -39,7 +39,6 @@ function setupCommonGuard(router: Router) {
     // if (preferences.transition.progress) {
     stopProgress()
     // }
-    console.log(to)
 
     // 动态修改标题
     // if (preferences.app.dynamicTitle) {

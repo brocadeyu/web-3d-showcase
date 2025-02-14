@@ -13,12 +13,22 @@
           {{ '请输入您的账户信息以开始管理您的项目' }}
         </span>
       </p>
+      <el-button @click="handleLogin">-></el-button>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { useAuthStore } from '@/stores/auth'
+import { useRouter } from 'vue-router'
+const auth = useAuthStore()
+const router = useRouter()
+const { setAccessToken } = auth
 const handleSubmit = () => {
   console.log('handleSubmit')
+}
+const handleLogin = () => {
+  setAccessToken('test_Token')
+  router.push('/workspace')
 }
 </script>
