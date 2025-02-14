@@ -10,7 +10,6 @@ import { useAuthStore } from '@/stores/auth'
 // import { $t } from '#/locales'
 import { coreRouteNames, dynamicRoutes } from './routes/index'
 // import { useAuthStore } from '#/store'
-import { sleep } from '@/utils'
 // import { generateAccess } from './access'
 
 /**
@@ -31,14 +30,13 @@ function setupCommonGuard(router: Router) {
     return true
   })
 
-  router.afterEach(async (to) => {
+  router.afterEach((to) => {
     // 记录页面是否加载,如果已经加载，后续的页面切换动画等效果不在重复执行
 
     loadedPaths.add(to.path)
 
     // 关闭页面加载进度条
     // if (preferences.transition.progress) {
-    await sleep(200)
     stopProgress()
     // }
     console.log(to)
