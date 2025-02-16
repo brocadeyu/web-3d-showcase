@@ -15,10 +15,10 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   return {
     plugins: [
-      vitePluginConsoleOverlay(),
+      // vitePluginConsoleOverlay(),
       vue(),
       vueJsx(),
-      vueDevTools(),
+      // vueDevTools(),
       tailwindcss(),
       AutoImport({
         resolvers: [ElementPlusResolver()],
