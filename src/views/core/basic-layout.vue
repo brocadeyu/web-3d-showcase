@@ -1,4 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import SceneManager from '@/scene/core/SceneManager'
+import { onMounted } from 'vue'
+onMounted(() => {
+  const scene = new SceneManager(document.getElementById('three') as HTMLElement)
+  scene.render()
+})
+</script>
 <template>
   <div class="flex min-h-full flex-1 select-none overflow-x-hidden">
     <div
@@ -8,12 +15,12 @@
         border-right: 1px solid #2f2f2f;
       "
     ></div>
-    <div class="relative hidden w-0 flex-1 lg:block">
-      <div></div>
+    <div class="relative hidden w-0 flex-1 lg:block" id="three">
+      <!-- <div></div>
       <div></div>
       <div>
         <RouterView />
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
