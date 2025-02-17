@@ -1,5 +1,6 @@
 import type { RouteRecordRaw } from 'vue-router'
 import AuthPageLayout from '@/views/auth/auth-layout.vue'
+// import BasicLayout from '@/views/core/basic-layout.vue'
 const fallbackNotFoundRoute: RouteRecordRaw = {
   component: () => import('@/views/core/not-found.vue'),
   name: 'FallbackNotFound',

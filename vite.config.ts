@@ -18,7 +18,7 @@ export default defineConfig(({ mode }) => {
       // vitePluginConsoleOverlay(),
       vue(),
       vueJsx(),
-      // vueDevTools(),
+      vueDevTools(),
       tailwindcss(),
       AutoImport({
         resolvers: [ElementPlusResolver()],

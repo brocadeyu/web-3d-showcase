@@ -1,7 +1,7 @@
 // 样式导入
 // import './assets/main.css'
-import './assets/global.css'
-import './assets/nprogress.css'
+// import './assets/global.css'
+// import './assets/nprogress.css'
 // Vue 相关导入
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -12,7 +12,8 @@ import { router } from './router'
 async function bootstrap() {
   // 创建应用实例
   const app = createApp(App)
-
+  await import('./assets/global.css')
+  await import('./assets/nprogress.css')
   // 使用插件
   const pinia = createPinia()
   pinia.use(piniaPluginPersistedstate)
