@@ -1,6 +1,6 @@
 export { BaseScene } from './core/BaseScene'
 async function loadScenes() {
-  const modules = import.meta.glob('./scenes/*.ts')
+  const modules = import.meta.glob('./scenes/three/*.ts')
   const scenes: Record<string, any> = {}
 
   for (const path in modules) {

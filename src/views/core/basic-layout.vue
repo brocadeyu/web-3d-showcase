@@ -2,9 +2,15 @@
 import SceneManager from '@/scene/core/SceneManager'
 import { onMounted, ref } from 'vue'
 import { loadScenes } from '@/scene'
+import { sleep } from '@/utils'
+import { nextTick } from 'vue'
 onMounted(async () => {
-  const scene = new SceneManager(document.getElementById('three') as HTMLElement)
-  scene.render()
+  nextTick(() => {
+    const scene = new SceneManager(document.getElementById('three') as HTMLElement)
+    // await sleep(200)
+    scene.render()
+  })
+
   const scenes = await loadScenes()
   const list: string[] = []
   Object.values(scenes).forEach((i) => {

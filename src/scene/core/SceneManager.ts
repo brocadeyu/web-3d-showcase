@@ -1,5 +1,4 @@
 import * as THREE from 'three'
-import '../index'
 export default class {
   scene
   camera
@@ -7,17 +6,20 @@ export default class {
   cube: THREE.Object3D<THREE.Object3DEventMap> | undefined
   rect
   constructor(container: HTMLElement) {
-    this.scene = new THREE.Scene()
+    //renderer
+    this.renderer = new THREE.WebGLRenderer({ antialias: true })
+    this.renderer.setPixelRatio(window.devicePixelRatio)
     const rect = container.getBoundingClientRect()
     this.rect = rect
     const aspect = rect.width / rect.height
-    this.scene.background = new THREE.Color(0x000000)
-    this.camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 1000)
-    this.renderer = new THREE.WebGLRenderer({ antialias: false })
-    this.renderer.setPixelRatio(window.devicePixelRatio)
     this.renderer.setSize(rect.width, rect.height)
-
     container.appendChild(this.renderer.domElement)
+    //camera
+    this.camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 1000)
+    //scene
+    this.scene = new THREE.Scene()
+    this.scene.background = new THREE.Color(0x000000)
+
     this.init()
     window.onresize = () => {
       const rect = container.getBoundingClientRect()
@@ -42,7 +44,7 @@ export default class {
   }
   init() {
     this.camera.position.set(0, 0, 20)
-    this.scene.add(new THREE.AmbientLight(0xffffff, 1.0))
+    // this.scene.add(new THREE.AmbientLight(0x000000, 1.0))
     const size = 8
     const widthSegments = 2
     const heightSegments = 2
