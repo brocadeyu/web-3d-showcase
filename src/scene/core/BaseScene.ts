@@ -1,12 +1,8 @@
-import * as THREE from 'three'
-interface IBaseScene {
-  scene: THREE.Scene
-  render: () => void
-}
-export abstract class BaseScene implements IBaseScene {
-  scene: THREE.Scene
-  constructor() {
-    this.scene = new THREE.Scene()
+export default abstract class BaseScene {
+  el: HTMLElement
+  constructor(target: HTMLElement) {
+    this.el = target
   }
-  abstract render(): void
+  load() {}
+  dispose() {}
 }
