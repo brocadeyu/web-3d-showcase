@@ -1,4 +1,5 @@
 node_modules
+public/img
 .DS_Store
 dist
 dist-ssr
@@ -49,3 +50,4 @@ vite.config.ts.*
 *.sln
 *.sw?
 .history
+

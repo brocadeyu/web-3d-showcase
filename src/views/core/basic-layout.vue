@@ -1,24 +1,33 @@
 <script setup lang="ts">
 import SceneManager from '@/scene/core/SceneManager'
 import { onMounted, ref } from 'vue'
-import { loadScenes } from '@/scene'
+import { loadCesiumScenes } from '@/scene'
 import { sleep } from '@/utils'
 import { nextTick } from 'vue'
+import Adaptor from '@/scene/core/Adaptor'
 onMounted(async () => {
   nextTick(() => {
-    const scene = new SceneManager(document.getElementById('three') as HTMLElement)
+    // const scene = new SceneManager(document.getElementById('three') as HTMLElement)
     // await sleep(200)
-    scene.render()
+    // scene.render()
+    const adaptor = new Adaptor()
   })
 
-  const scenes = await loadScenes()
+  const scenes = await loadCesiumScenes()
   const list: string[] = []
-  Object.values(scenes).forEach((i) => {
-    list.push(i.sceneName)
+  Object.keys(scenes).forEach((i) => {
+    list.push(i)
   })
   sceneList.value = list
 })
 const sceneList = ref<string[]>([])
+const handleClickItem = async (i) => {
+  const scenes = await loadCesiumScenes()
+  const func = scenes[i]
+  if (func) {
+    func()
+  }
+}
 </script>
 <template>
   <div class="flex min-h-full flex-1 select-none overflow-x-hidden">
@@ -29,9 +38,20 @@ const sceneList = ref<string[]>([])
         border-right: 1px solid #2f2f2f;
       "
     >
-      <div v-for="(item, index) in sceneList" :key="index">{{ item }}</div>
+      <div
+        class="leftBtn"
+        v-for="(item, index) in sceneList"
+        @click="handleClickItem(item)"
+        :key="index"
+      >
+        {{ item }}
+      </div>
     </div>
-    <div class="relative hidden w-0 flex-1 lg:block" style="background-color: black" id="three">
+    <div
+      class="relative hidden w-0 flex-1 lg:block"
+      style="background-color: black"
+      id="mapContainer"
+    >
       <!-- <div></div>
       <div></div>
       <div>
@@ -40,3 +60,13 @@ const sceneList = ref<string[]>([])
     </div>
   </div>
 </template>
+<style scoped>
+.leftBtn {
+  border: 1px solid gray;
+  margin-top: 5px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  padding-left: 10px;
+  color: white;
+}
+</style>

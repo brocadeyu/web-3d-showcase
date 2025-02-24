@@ -1,9 +1,11 @@
-import BaseScene from './BaseScene'
-export default class cesiumScene extends BaseScene {
-  viewer: Viewer
-  constructor(opt) {
-    super(opt)
-    this.viewer = new Viewer()
+import { loadCesiumScenes } from '..'
+export default class cesiumScene {
+  viewer = null
+  constructor() {
+    this.viewer = new GeoVis.Earth('mapContainer')
+    const baseImageUrl = '/img/{z}/{x}/{y}.png'
+    const layer = new GeoVis.TileLayer(baseImageUrl).addTo(this.viewer.layers)
+    window.earth = this.viewer
   }
   load(func: () => void) {
     func.call(this)
