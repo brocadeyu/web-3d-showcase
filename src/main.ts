@@ -1,3 +1,4 @@
+import { sleep } from './utils'
 import { unmountGlobalLoading } from './utils/unmount-global-loading'
 async function initApplication() {
   // 启动应用并挂载
