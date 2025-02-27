@@ -15,7 +15,7 @@ export default class Adaptor {
   threeCore: ThreeSceneLoader | undefined
   functionMap: Record<string, SceneInfo> = {}
   currentScene: Pick<SceneInfo, 'type' | 'unloadFn'> | undefined
-  triggerScene(sceneName: string) {
+  async triggerScene(sceneName: string) {
     const scene = this.functionMap[sceneName] as SceneInfo
 
     //是否存在上一个场景，存在销毁重置 反复创建场景的问题？
@@ -30,7 +30,7 @@ export default class Adaptor {
     }
     //执行当前环境
     const { type, loadFn } = scene
-    this.initSceneLoader(type)
+    await this.initSceneLoader(type)
     loadFn()
     this.setCurrentScene(scene)
   }
@@ -43,10 +43,11 @@ export default class Adaptor {
       // this.threeCore.dispose()
     }
   }
-  initSceneLoader(type: SceneType) {
+  async initSceneLoader(type: SceneType) {
     if (type === 'cesium') {
       if (!this.cesiumCore) {
         this.cesiumCore = new CesiumSceneLoader()
+        await this.cesiumCore.init()
       }
     }
     if (type === 'three') {

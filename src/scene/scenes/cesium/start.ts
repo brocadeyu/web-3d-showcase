@@ -1,6 +1,5 @@
-export const name = 'fly'
+export const name = 'start'
 export const load = () => {
-  console.log('fly 执行')
   earth.camera.flyTo({
     destination: GeoVis.Cartesian3.fromDegrees(-122.19, 46.25, 5000.0),
     orientation: {

@@ -49,9 +49,13 @@ const handleClickItem = (i: string) => {
         background-color: #27272a80;
         border: 1px solid #27272a;
         box-sizing: border-box;
+        position: relative;
+        overflow: hidden;
       "
       id="sceneContainer"
-    ></div>
+    >
+      <div id="mask">loading...</div>
+    </div>
   </div>
 </template>
 <style scoped>
@@ -63,4 +67,30 @@ const handleClickItem = (i: string) => {
   padding-left: 10px;
   color: white;
 }
+#mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  border-radius: 6px;
+  background: black;
+  animation: changColor 0.8s infinite ease-in-out;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* @keyframes changColor {
+  0% {
+    background: black;
+  }
+  50% {
+    background: rgb(26, 26, 26);
+  }
+  100% {
+    background: black;
+  }
+} */
 </style>
