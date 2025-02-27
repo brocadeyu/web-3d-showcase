@@ -13,3 +13,8 @@ export const load = () => {
     },
   })
 }
+const unload = () => {
+  console.log('卸载')
+}
+
+export { unload }
