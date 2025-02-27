@@ -1,4 +1,4 @@
-export const name = '电磁包络'
+export const name = 'customPrimitive'
 const a = 'test'
 import { generateHemisphere } from '@/scene'
 import { GUI } from 'dat.gui'
@@ -177,8 +177,8 @@ export default function () {
           values: new Float32Array(positions),
         }),
       },
-      indices: new Uint16Array(indices), // 使用线框索引
-      primitiveType: GeoVis.PrimitiveType.TRIANGLES, // 设置为线框绘制
+      indices: new Uint16Array(indices),
+      primitiveType: GeoVis.PrimitiveType.TRIANGLES,
       boundingSphere: GeoVis.BoundingSphere.fromVertices(positions),
     })
     const l = new GeoVis.Geometry({
@@ -189,8 +189,8 @@ export default function () {
           values: new Float32Array(positions),
         }),
       },
-      indices: new Uint16Array(lines), // 使用线框索引
-      primitiveType: GeoVis.PrimitiveType.LINES, // 设置为线框绘制
+      indices: new Uint16Array(lines),
+      primitiveType: GeoVis.PrimitiveType.LINES,
       boundingSphere: GeoVis.BoundingSphere.fromVertices(positions),
     })
     myPrimitive.updateGeometry(g)

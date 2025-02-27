@@ -30,9 +30,9 @@ const handleClickItem = async (i) => {
 }
 </script>
 <template>
-  <div class="flex min-h-full flex-1 select-none overflow-x-hidden">
+  <div class="flex min-h-full select-none overflow-x-hidden">
     <div
-      class="min-h-full w-[224px] flex-1 flex-col-start relative px-3 py-5 lg:flex-initial lg:px-4"
+      class="min-h-full w-[224px] flex-1 flex-col-start relative px-3 py-5 lg:flex-initial lg:px-4 box-border"
       style="
         background: linear-gradient(to right, #3e3e3e, #131313);
         border-right: 1px solid #2f2f2f;
@@ -48,16 +48,10 @@ const handleClickItem = async (i) => {
       </div>
     </div>
     <div
-      class="relative hidden w-0 flex-1 lg:block"
-      style="background-color: black"
-      id="mapContainer"
-    >
-      <!-- <div></div>
-      <div></div>
-      <div>
-        <RouterView />
-      </div> -->
-    </div>
+      class="hidden h-[100vh] lg:flex flex-col"
+      style="width: calc(100vw - 224px)"
+      id="sceneContainer"
+    ></div>
   </div>
 </template>
 <style scoped>
