@@ -1,32 +1,23 @@
 <script setup lang="ts">
-import SceneManager from '@/scene/core/SceneManager'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, shallowRef } from 'vue'
 import { loadCesiumScenes } from '@/scene'
-import { sleep } from '@/utils'
-import { nextTick } from 'vue'
 import Adaptor from '@/scene/core/Adaptor'
-onMounted(async () => {
-  nextTick(() => {
-    // const scene = new SceneManager(document.getElementById('three') as HTMLElement)
-    // await sleep(200)
-    // scene.render()
-    const adaptor = new Adaptor()
-  })
-
-  const scenes = await loadCesiumScenes()
-  const list: string[] = []
-  Object.keys(scenes).forEach((i) => {
-    list.push(i)
-  })
-  sceneList.value = list
-})
+const adaptor = shallowRef<Adaptor>()
 const sceneList = ref<string[]>([])
-const handleClickItem = async (i) => {
-  const scenes = await loadCesiumScenes()
-  const func = scenes[i]
-  if (func) {
-    func()
+
+onMounted(async () => {
+  adaptor.value = new Adaptor()
+  await initSceneMenus()
+})
+const initSceneMenus = async () => {
+  if (adaptor.value) {
+    const scenes = await adaptor.value.loadCesiumSceneList()
+    sceneList.value = scenes
   }
+}
+
+const handleClickItem = (i: string) => {
+  adaptor.value?.triggerScene(i)
 }
 </script>
 <template>

@@ -2,7 +2,7 @@ export const name = 'customPrimitive'
 const a = 'test'
 import { generateHemisphere } from '@/scene'
 import { GUI } from 'dat.gui'
-export default function () {
+export const load = () => {
   console.log('电磁包络执行', a)
   const radius = 500000
   const latSegments = 20
