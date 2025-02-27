@@ -25,19 +25,19 @@ function setupCommonGuard(router: Router) {
 
     // 页面加载进度条
     if (!to.meta.loaded) {
-      startProgress()
+      await startProgress()
     }
     return true
   })
 
-  router.afterEach((to) => {
+  router.afterEach(async (to) => {
     // 记录页面是否加载,如果已经加载，后续的页面切换动画等效果不在重复执行
 
     loadedPaths.add(to.path)
 
     // 关闭页面加载进度条
     // if (preferences.transition.progress) {
-    stopProgress()
+    await stopProgress()
     // }
 
     // 动态修改标题
