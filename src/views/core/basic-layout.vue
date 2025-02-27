@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref, shallowRef } from 'vue'
-import { loadCesiumScenes } from '@/scene'
 import Adaptor from '@/scene/core/Adaptor'
+
 const adaptor = shallowRef<Adaptor>()
 const sceneList = ref<string[]>([])
 

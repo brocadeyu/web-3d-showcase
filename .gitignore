@@ -51,3 +51,4 @@ vite.config.ts.*
 *.sw?
 .history
 
+src/types/components.d.ts
