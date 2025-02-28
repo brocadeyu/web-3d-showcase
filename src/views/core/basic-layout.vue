@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref, shallowRef } from 'vue'
 import Adaptor from '@/scene/core/Adaptor'
-
+import { useTitle } from '@vueuse/core'
 const adaptor = shallowRef<Adaptor>()
 const sceneList = ref<string[]>([])
 const currentCheckName = ref<string | null>(null)
@@ -17,6 +17,7 @@ const initSceneMenus = async () => {
 }
 
 const handleClickItem = (i: string) => {
+  useTitle(`Brocadeyu - ${i}`)
   currentCheckName.value = i
   adaptor.value?.triggerScene(i)
 }
