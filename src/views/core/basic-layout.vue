@@ -4,7 +4,7 @@ import Adaptor from '@/scene/core/Adaptor'
 
 const adaptor = shallowRef<Adaptor>()
 const sceneList = ref<string[]>([])
-
+const currentCheckName = ref<string | null>(null)
 onMounted(async () => {
   adaptor.value = new Adaptor()
   await initSceneMenus()
@@ -17,6 +17,7 @@ const initSceneMenus = async () => {
 }
 
 const handleClickItem = (i: string) => {
+  currentCheckName.value = i
   adaptor.value?.triggerScene(i)
 }
 </script>
@@ -33,6 +34,9 @@ const handleClickItem = (i: string) => {
       <div
         class="leftBtn"
         v-for="(item, index) in sceneList"
+        :class="{
+          active: item === currentCheckName,
+        }"
         @click="handleClickItem(item)"
         :key="index"
       >
@@ -82,15 +86,8 @@ const handleClickItem = (i: string) => {
   justify-content: center;
   align-items: center;
 }
-/* @keyframes changColor {
-  0% {
-    background: black;
-  }
-  50% {
-    background: rgb(26, 26, 26);
-  }
-  100% {
-    background: black;
-  }
-} */
+.active {
+  background: #3b3b3b;
+  border-color: #ffffff;
+}
 </style>
